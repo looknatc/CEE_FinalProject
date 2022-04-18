@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;400;600&display=swap');
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section{
+    margin-left:40px;
+    margin-top:40px;
+    margin-right:40px;
+    position: relative;
+    
+}
+.create-question-title{
+    padding-left: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    color: rgb(46, 142, 51);
+    background-color: rgba(102, 253, 157, 0.417);
+    line-height: 60px;
+    vertical-align: bottom;
+    
+}
+#selectSubject{
+    
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+#detail{
+    margin-left: 40px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items:baseline;
+}
+
+.form_radio_btn1 {
+	display: inline-block;
+    margin-left: 40px;
+	margin-right: 10px;
+}
+.form_radio_btn1 input[type=radio] {
+	display: none;
+}
+.form_radio_btn1 label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-radius: 6px;
+	user-select: none;
+    font-size: 20px;
+}
+
+/* Checked */
+.form_radio_btn1 input[type=radio]:checked + label {
+	background: #8ebfff;
+}
+
+
+/* Hover */
+.form_radio_btn1 label:hover {
+	color: #666;
+}
+ 
+/* Disabled */
+.form_radio_btn1 input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #666;
+}
+
+
+/*button2*/
+.form_radio_btn2 {
+	display: inline-block;
+	margin-right: 100px;
+}
+.form_radio_btn2 input[type=radio] {
+	display: none;
+}
+.form_radio_btn2 label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-radius: 6px;
+	user-select: none;
+    font-size: 20px;
+}
+
+/* Checked */
+.form_radio_btn2 input[type=radio]:checked + label {
+	background: #ffdd9e;
+}
+
+
+/* Hover */
+.form_radio_btn2 label:hover {
+	color: #666;
+}
+ 
+/* Disabled */
+.form_radio_btn2 input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #666;
+}
+
+#selectSubject{
+    margin-left:30px;
+}
+
+#questionTitle{
+    margin-right:30px;
+}
+
+.input-text-question{
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    outline: none;
+    inline-size: 30%;
+    font-size: large;
+
+    overflow-wrap: break-word;
+}
+
+#detailTextInput{
+    margin-left: 40px; 
+    font-size:x-large;
+    
+}
+
+#lastButton{
+    position: absolute;
+    right:70px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+#finishButton{
+    margin-top:0px;
+    width:80px;
+    height: 40px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+#cancelButton{
+    width:80px;
+    height: 40px;
+    font-size: 20px;
+}

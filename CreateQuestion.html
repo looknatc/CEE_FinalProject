@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="createq.css" />
+  <title>CreatQuestion</title>
+</head>
+
+<body>
+      <section>
+        <h2 class="create-question-title">Create Question</h2>
+        <hr>
+        
+      </section>
+
+      <section id="selectSubject">
+        
+        <h2 id="selectSubject" >Select Subject: </h2>
+        <div class="form_radio_btn1">
+          <input id="radio-1" type="radio" name="radio" value="1" onclick="selectAssignValue(1)" >
+          <label for="radio-1">Math</label>
+        </div>
+         
+        <div class="form_radio_btn2">
+          <input id="radio-2" type="radio" name="radio" value="2" onclick="selectAssignValue(2)">
+          <label for="radio-2">English</label>
+        </div>
+
+        <h2 id="questionTitle">Title</h2>
+        <input class="input-text-question" type = "text"  id = "QuestionTextInput" placeholder="Creat title...">
+        
+      </section>
+
+      <section id="detail">
+        <h2 style="margin-left:20px;">Detail:</h2>
+        <!-- <input type = "textarea" id="ansTextInput" name="answer" rows="4" cols="50"> -->
+        <textarea id="detailTextInput" name="answer" rows="4" cols="80" placeholder="Write detail...">
+
+          </textarea>
+        <!-- <input type = "button" value = "submit1" onclick="CreatAnswer()" /> -->
+        
+      </section>
+      <section>
+
+        <hr>
+      </section>
+
+      <section id="lastButton">
+        <button id="finishButton" onclick="finishQuestion()">Finish</button>
+        <button id="cancelButton" onclick="cancel()">Cancel</button>
+      </section>
+      
+    </body>
+    <script src = "page2.js"></script>
+
+
+  
