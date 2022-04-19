@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="main.css" />
+  <title>Document</title>
+</head>
+
+
+<body onload="onload()">
+
+<!--header part -->
+
+    <header>
+      <div class="logo">CEEThip<span>.</span></div>
+      <div class="page question">
+        <h3 id="user-name"></h3>
+        <button id = "CreatQuestion" onclick="toHome()">Home</button>
+        <button id = "MyQuestion" onclick="ToMyQuestion()">My Question</button>
+      </div>
+    </header>
+
+<!-- home part-->
+    <div id="login">
+    <div class="page home-page open">
+      <style>
+          .home{
+              padding: 1.5rem 7%;
+              display: flex;
+              align-items: center;
+              min-height: 80vh;
+              background-size: cover;
+              background-position: center;
+          }
+          .home .content{
+              width: 70%;
+          }
+          .home .content h3{
+              font-size: 5rem;
+              color:#333;
+          }
+          .home .content span{
+              text-align: center;
+              font-size: 2.5rem;
+              color:var(--pink);
+              padding:1rem 0;
+              line-height: 1.8;
+          }
+          .home .content p{
+              font-size: 2rem;
+              color:rgb(123, 122, 122);
+              padding: 1rem 0;
+              line-height: 1.5;
+          }
+          .home input{
+              width: 45rem;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid grey;
+              border-radius: 4px;
+              box-sizing: border-box;
+              align-items: center;
+          }
+          .image img{
+              width: 70rem;
+              height: auto;
+              align-items: center;
+          }
+      </style>
+      
+      <section class="home" id="home">
+
+        <div class="content">
+            <h3>Welcome to CEEThip<span>.</span></h3>
+            <span>question and answer platform that help students with online learning</span>
+            <p>แพลต์ฟอร์มเว็บบอร์ดที่ให้นักเรียนสามารถตั้งกระทู้ถามข้อสงสัยเกี่ยวกับรายวิชา 
+                และสามารถให้อาจารย์หรือนักเรียนคนอื่นเข้ามาตอบคำถามได้ </p>
+            <p>ถ้าอยากเป็นส่วนหนึ่งกับเรา โปรดใส่ชื่อ</p>
+            <form style="align-items: center; ">
+                <input type="text" class = "nnninputusername" id="name" placeholder="Your name.." />
+                <button onclick="changeUsername(); ">Enter</button>
+            </form>
+        </div>
+      
+        <div class="image">
+            <img src="working3.png" alt="Working images">
+        </div>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- web board part -->
+
+    <div class = "page main-page">
+      
+      <section id="{{SUBJECT}}" class = "subject hide" >
+        <div style="display: flex; align-items: center;">
+          <img src="idea-icon.png" alt="bulb" style="height: 5rem;">
+          <h3 class="title">{{SUBJECT}}<span>.</span></h3>
+        </div>
+        
+        <br> 
+        <table class="tab-data">
+            <thead>
+              <tr class="head-table">
+                <th class="q-header">Question</th>
+                <th>Reply</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+          <tbody> 
+            <tr id="{{QUESTION-ID}}" class="hide" onclick = "showQuestion('{{QUESTION-ID}}');">
+              <td class="q-icon">
+                  <img src = "questionMark-Math.png" style="padding-right: 15px; ">
+                  <span>{{QUESTION}}</span>
+                  <!-- <a href="page3-Math.html" class = "q-a" style="left:0px">{{QUESTION}}</a> -->
+              </td>
+              <td>{{REPLY}}</td>
+              <td>{{AUTHOR}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="add-question">
+          <input class="question-title" type = "text"  placeholder="Creat your question...">
+          <input class="question-detail" type = "text"  placeholder="Detail here...">
+          <button onclick="AddQuestion('{{SUBJECT}}')">Create</button>
+        </div>
+        
+      </section>
+      <div id="subjectData"></div>
+      <section class="add-subject">
+        <img src="add-icon.png" alt="Add subject">
+        <input class="subject-add" type = "text"  placeholder="Add Subject..."><button onclick="AddSubject();">Submit</button>
+      </section> 
+    </div>
+    
+
+<!-- answer part -->
+
+    <div class = "page q-page">
+      <style>
+        button:hover{
+          background:#e84393;
+        }
+        textarea{
+            margin-top:15px;
+            padding: 15px 15px;
+            resize: none;
+            width: 100%;
+        }
+      </style>
+      <section>
+        <h2 class="title" id="q_subject">{{SUBJECT}}</h2>
+        <hr style="margin-bottom: -10px; border: 1px solid grey;">
+      </section>
+
+      <section style="background-color: #eef6ee; background-clip: content-box;">
+        <h2 class="section-title" >
+          <img src = "questionMark-Math.png">
+          <span id="q_text" style="font-size: 3rem;">{{QUESTION_TEXT}}</span>
+        </h2>
+        <br>
+        
+        <p class="paraQuestion" id="q_detail" style="font-size: 1.7rem; text-align: justify;
+        vertical-align: top;">{{QUESTION_DETAIL}}</p>
+        <h3 style="text-align: right; font-size:1.5rem;" id="q_author">{{AUTHOR}}</h3>
+        <hr style="border: 1px solid grey; width: 100%;"/>
+      </section>
+          
+      <section id = "detail">
+        <h2 class="section-answer" style="font-size:2rem;">Reply:</h2>
+        <textarea id="ansTextInput" name="answer" rows="5" cols="90" placeholder="Reply..."></textarea>
+        <button style="margin-top: 0.5rem; border-radius: 5rem; background:#333;
+        color:#fff; padding:.5rem 3.5rem;cursor: pointer; font-size: 1.5rem;
+        float: right;" onclick="AddAnswer()">Submit</button>
+      </section>
+
+      <br>
+
+      <section id ="ReplyList">
+        <table class = "ans-template hide" id = "mrtable" style="table-layout: fixed;font-family:Arial, Helvetica, sans-serif; 
+        font-size: 1.5rem; position: relative; border-radius: 4px;border: 1px solid; 
+        text-align: left;margin-bottom: 20px;width:100%;">
+          <thead>
+            <th id = "math" style=" height: 30px;
+            font-size: larger; padding-left: 10px;
+            background-color: rgba(197, 243, 243, 0.333);
+            padding-bottom: 0px; width: 75%;">Ans</th>
+            <th id = "muth" style="background-color: rgb(197, 243, 243);
+            text-align: right; padding-right: 10px;">{{ANS-AUTHOR}}</th>
+          </thead>
+            
+          <tbody>
+            <td id = "matd" style = "font-size: large; padding: 10px; text-align: left; margin: 10px;" colspan="2" ><p>{{ANS-TEXT}}</p></tr>
+          </tbody>
+        </table>
+        <div class="data"></div>
+      </section>
+
+    </div> 
+
+<!-- my question part-->
+    <div class="page myquestion">
+      <style>
+        #mqatd:hover{
+          color:#e84393;
+        }
+      </style>
+    <section>
+      <h3 class="title-MyQuestion" style="font-size: 3rem;">MyQuestion<span style="color:#e84393">.</span></h3>
+      <hr>
+    </section >
+    
+
+    <section>
+      
+      <table id = "mqrtable" style="table-layout: fixed;font-family:Arial, Helvetica, sans-serif; border-top: 1px solid;
+      text-align: left; margin-bottom: 20px;width:100%;">
+        <thead>
+          <th id = "mqs-mth" style="font-size: 2rem; background-color: rgb(197, 243, 243);">{{SUBJECT}}</th>
+          <th id = "mqr-mth" style="background-color: rgba(197, 243, 243, 0.333); font-size: 1.8rem;">{{REPLY}}</th>
+          <th id = "mqvth"></th>
+        </thead>
+        <!-- question -->
+        <tbody>
+          <td id = "mqatd" colspan="4" style="font-size: 1.8rem; padding: 20px 10px; text-align: left; cursor: pointer" id="{{QUESTION-ID}}" onclick = "showQuestionFromMQ('{{QUESTION-ID}}');">อนุพันธ์คืออะไร</tr>
+        </tbody>
+      </table>
+             
+    </section>
+    
+  </div>
+  
+<!-- javascript part-->
+
+<script type="module" src ="home.js"></script>    
+<script>
+     
+var userName = "";
+var gQuestion = {};
+var gID ;
+
+
+function UICreateSubject(subject)
+{
+    console.log(subject);
+    var section = document.querySelector("section.subject");
+    var newSection = section.cloneNode(true);
+    newSection.classList.remove("hide");
+    var strHTML = newSection.outerHTML;
+    strHTML = strHTML.replaceAll("{{SUBJECT}}",subject);
+    
+    var body = document.querySelector("#subjectData");
+    body.insertAdjacentHTML('beforeend', strHTML );
+}
+
+function UICreateQuestion(subject,question,reply,author,qID){
+  console.log("UICreateQuestion",subject,question,reply,author,qID);
+    var tbody = document.querySelector("#" + subject + " .tab-data tbody");
+    var tr = tbody.querySelector(".hide");
+
+    var newTr = tr.cloneNode(true);
+    newTr.classList.remove("hide");
+
+
+    var strHTML = newTr.outerHTML;
+    strHTML = strHTML.replaceAll("{{QUESTION}}",question);
+    strHTML = strHTML.replaceAll("{{REPLY}}",reply);
+    strHTML = strHTML.replaceAll("{{AUTHOR}}",author);
+    strHTML = strHTML.replaceAll("{{QUESTION-ID}}",qID);
+
+    tbody.insertAdjacentHTML('beforeend', strHTML );
+    
+    console.log(tr);
+}
+
+async function AddSubject(){
+  var subject = document.querySelector(".subject-add").value;
+  subject.trim();
+  if(subject != ""){
+    UICreateSubject(subject);
+    document.querySelector(".subject-add").value = "";
+  }else{
+    UIAlert("Enter your new subject first!!!!");
+  }
+
+}
+async function AddQuestion(subject){
+    var title = document.querySelector("#" + subject + " .question-title").value;
+    var detail = document.querySelector("#" + subject + " .question-detail").value;
+    title = title.trim();
+    detail = detail.trim();
+    if( title != ""){
+    
+      console.log(title,detail);
+      var x = await addquestion({question_txt:title,subject:subject,detail:detail,author:userName});
+      console.log(x);
+      UICreateQuestion(subject,title,0,userName,x);
+      document.querySelector("#" + subject + " .question-title").value = "";
+      document.querySelector("#" + subject + " .question-detail").value = "";
+
+      // รหัสไรงะ
+      showQuestion(this);
+
+      }else{
+      UIAlert("Enter your question first!!!!")
+    }   
+}
+
+function UICreateAnswer(obj){
+    // var ans_arr = document.querySelector("#ReplyList");
+    // console.log(ans_arr);
+    
+    var ans_template = document.querySelector("#ReplyList .ans-template ");
+    console.log(ans_template);
+
+    var ans = ans_template.cloneNode(true);
+    ans.classList.remove("hide");
+
+
+    var strHTML = ans.outerHTML;
+    strHTML = strHTML.replaceAll("{{ANS-TEXT}}",obj.text);
+    strHTML = strHTML.replaceAll("{{ANS-AUTHOR}}",obj.author);
+
+    var addplace = document.querySelector("#ReplyList .data");
+    console.log(addplace);
+    addplace.insertAdjacentHTML('beforeend', strHTML );
+    
+    console.log(ans_template);
+}
+function AddAnswer(){
+    var ans_text = document.querySelector("#ansTextInput").value;
+    ans_text = ans_text.trim();
+    if(ans_text !=""){
+      console.log(ans_text);
+      addanswer({question_id:gID,author:userName,anstext:ans_text});
+      UICreateAnswer({text:ans_text,author:userName});
+      document.querySelector("#ansTextInput").value = "";
+    }else{
+      UIAlert("enter your answer first!!!!")
+    }
+    
+    
+}
+// AddAnswer()
+function toHome(){
+  
+  onload();
+  console.log("toHome");
+    document.querySelector(".q-page").classList.remove("open");
+    document.querySelector(".myquestion").classList.remove("open");
+    document.querySelector(".main-page").classList.add("open");
+}
+function toHomefromlogin(){
+  
+  onload();
+  
+  console.log("toHomefrom login");
+    document.querySelector(".home-page").classList.remove("open");
+    document.querySelector("#login").innerHTML = '';
+    document.querySelector(".main-page").classList.add("open");
+    document.querySelector(".question").classList.add("open");
+}
+
+
+async function showQuestion(qID){
+    gID = qID;
+    console.log("showQuestion", qID);
+    document.querySelector(".main-page").classList.remove("open");
+    document.querySelector(".q-page").classList.add("open");
+    var question=await getquestion({question_id:qID});
+    question = {subject:'N/A',text:'N/A',detail:'N/A',author:'N/A', ... question};
+    UIClearAnswer();
+    var answers = question.ans;
+    for(var ans in answers){
+        console.log("ans", answers[ans]);
+        UICreateAnswer(answers[ans]);
+    }
+    document.querySelector("#q_subject").innerHTML = question.subject;    
+    document.querySelector("#q_text").innerHTML = question.text;
+    document.querySelector("#q_detail").innerHTML = question.detail;
+    document.querySelector("#q_author").innerHTML = question.author;
+    
+}
+
+async function showQuestionFromMQ(qID){
+  gID = qID;
+    console.log("showQuestion", qID);
+    document.querySelector(".myquestion").classList.remove("open");
+    document.querySelector(".q-page").classList.add("open");
+    var question=await getquestion({question_id:qID});
+    question = {subject:'N/A',text:'N/A',detail:'N/A',author:'N/A', ... question};
+    UIClearAnswer();
+    var answers = question.ans;
+    for(var ans in answers){
+        console.log("ans", answers[ans]);
+        UICreateAnswer(answers[ans]);
+    }
+    document.querySelector("#q_subject").innerHTML = question.subject;    
+    document.querySelector("#q_text").innerHTML = question.text;
+    document.querySelector("#q_detail").innerHTML = question.detail;
+    document.querySelector("#q_author").innerHTML = question.author;
+
+}
+function UIClearAnswer(){
+    var ans_arr = document.querySelector(" #ReplyList .data");
+    ans_arr.innerHTML = '';
+    // console.log(ans_template);
+}
+
+async function loadSubject(){
+  var subjects = await getallsubject();
+  console.log("test()",subjects);  
+  for(var item in subjects){
+      UICreateSubject(item);
+      var questions = await getallquestion({
+          subject:item,
+      });
+      console.log(item,questions);
+      for(var q in questions){
+         var question = questions[q];
+         question = { ans:[],author:Date.now(), ... question};
+         UICreateQuestion(question.subject,question.text,question.ans.length,question.author,q);
+      }
+  }
+  
+}
+
+function ToMyQuestion(){
+  document.querySelector(".main-page").classList.remove("open");
+  document.querySelector(".q-page").classList.remove("open");
+  document.querySelector(".myquestion").classList.add("open");
+}
+function refresh(){
+  console.log("refresh");
+  loadSubject();
+}
+function onload(){
+  console.log("onload");
+  // login
+  document.querySelector("#subjectData").innerHTML = '';
+  
+  //set user name 
+  document.querySelector("#user-name").innerHTML = userName;
+  
+  loadSubject();
+}
+function changeUsername(){
+  var name = document.querySelector(".nnninputusername").value;
+  name = name.trim();
+  if(name != ""){
+    userName = name;
+    console.log(userName,"  name", name);
+    toHomefromlogin();
+  }
+  else{
+    UIAlert("enter your username first!!!!")
+  }
+}
+function UIAlert(msg){
+  alert(msg);
+}
+
+</script>
+<script src = "page2.js" ></script>
+</body>
+</html>

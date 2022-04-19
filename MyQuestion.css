@@ -1,0 +1,136 @@
+section{
+    margin: 40px 40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    /* background-color: aqua; */
+    
+}
+
+.title-MyQuestion{
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    padding-left: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    padding-top: 10px;
+    color: rgb(93, 0, 122);
+    height: 50px;
+    background-color: rgba(212, 116, 253, 0.406);
+    
+}
+
+.section-title{
+    font-size: x-large;
+    margin-bottom: 0px;
+}
+
+.paraQuestion{
+    overflow-wrap: break-word;
+    font-size: larger;
+    padding-left: 45px;
+    text-align: justify;
+    vertical-align: top;
+
+}
+
+
+#mqrtable{
+
+        table-layout: fixed;
+        font-family:Arial, Helvetica, sans-serif;
+        /* margin-left: 10px; */
+        position: relative;
+        /* left:100px; */
+        border-top: 1px solid;
+        /* border-bottom: 1px solid; */
+
+        text-align: left;
+        margin-bottom: 20px;
+        width:100%;
+    
+}
+
+
+#mqs-mth{
+    height: 30px;
+    font-size: larger;
+    padding-left: 10px;
+    /* border-bottom: 2px solid blue; */
+    background-color: rgb(197, 243, 243);
+    padding-bottom: 0px;
+    width: 5%;
+}
+#mqs-eth{
+    height: 30px;
+    font-size: larger;
+    padding-left: 10px;
+    /* border-bottom: 2px solid blue; */
+    background-color: rgba(252, 174, 40, 0.333);
+    padding-bottom: 0px;
+    width: 5%;
+}
+
+#mqr-mth{
+    /* border-bottom: 2px solid blue; */
+    background-color: rgba(197, 243, 243, 0.333);
+
+    text-align: left;
+    /* border: 1px solid; */
+    padding-left: 10px;
+    width: 10%;
+
+}
+#mqr-eth{
+    /* border-bottom: 2px solid blue; */
+    background-color: rgb(255, 246, 185);
+
+    text-align: left;
+    /* border: 1px solid; */
+    padding-right: 20px;
+    width: 10%;
+
+}
+#mqvth{
+    /* border: 1px solid; */
+
+    width: 50%;
+}
+#mqbth{
+    /* border: 1px solid; */
+    text-align: right;
+    width: 10%;
+    padding-right: 10px;
+}
+#mqatd{
+    font-size: large;
+    padding: 20px 10px;
+
+    overflow-wrap: break-word;
+    /* border: 1px solid; */
+}
+
+
+#detail{
+    margin-left: 40px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items:baseline;
+}
+
+#ansTextInput{
+    margin-left: 30px;
+    font-size: x-large;
+}
+
+.linktop3{
+    position: relative;
+    margin-left: 0px;
+    vertical-align: middle;
+    left: 40px;
+    color:rgb(96, 2, 107);
+    text-decoration: none;
+
+}
+.linktop3:hover{
+    color: red    ;
+}

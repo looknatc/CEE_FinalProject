@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;400;600&display=swap');
+body{
+    font-family: 'Mitr', sans-serif;
+    /* background-color: aquamarine; */
+    
+}
+
+:root{
+    --pink:#e84393;
+}
+
+*{
+    margin:0; padding:0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+section{
+    padding:2rem 9%;
+}
+
+body{
+    background-color: #fcf7f7;
+}
+
+header{
+    top:0; left:0; right:0;
+    background:#fff;
+    padding:2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+header .logo{
+    font-size: 3rem;
+    color:#333;
+    font-weight: bolder;
+}
+
+header .logo span{
+    color:var(--pink);
+}
+
+header .question{
+    align-items: left;
+}
+
+button{
+    margin-top: 0.5rem;
+    border-radius: 5rem;
+    background:#333;
+    color:#fff;
+    padding:.5rem 3.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+button:hover{
+    background:var(--pink);
+}
+
+.head-table td{
+    font-size: 2.2rem;
+    font-weight: bolder;
+    padding: 0; margin: 0;
+}
+
+.title {
+    padding-left: 10px;
+    font-size: 3rem;
+    font-weight: bold;
+    
+}
+
+.title span{
+    color:var(--pink);
+}
+
+.tab-data {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid blue;
+    table-layout: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    /* margin-left: 10px; */
+    
+    /* left: 100px; */
+    text-align: left;
+    width: 100%;
+}
+
+table{
+    background-color: white;
+}
+
+thead{
+    padding: 0;
+    box-shadow: 0 4px 2px rgb(216, 213, 213);
+}
+
+th{
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+}
+
+td{
+    text-align: center;
+    font-size: 2rem;
+}
+
+td span{
+    cursor: pointer;
+}
+
+
+td span:hover{
+    color:var(--pink);
+}
+
+tr:nth-child(even){
+    background-color: #fbf8fe;
+}
+.q-header {
+    
+    padding-left: 10px;
+    /* border: 1px solid; */
+    height: 40px;
+    width: 70%;
+}
+
+.add-subject{
+    display: flex;
+    align-items: center;
+}
+
+.add-subject img{
+    width: 4rem;
+    color: pink;
+}
+
+.add-subject input{
+    padding: 10px; margin: 10px;
+    border: none;
+    border-bottom: 2px solid rgb(230, 101, 230);
+    outline: none;
+    flex: 3;
+    font-size: 1.5rem;
+}
+
+
+.add-question{
+    display: flex;
+}
+
+.add-question button{
+    margin: 10px 0px 10px 2px;
+    flex: 0.2;
+    height: 45px;
+    font-size: 1.8rem;
+}
+
+.question-title{
+    padding: 10px;margin: 10px 2px 10px 0px;
+    border: none;
+    border-bottom: 2px solid blue;
+    outline: none;
+    flex: 1;
+    font-size: large;
+}
+.question-detail {
+    padding: 10px; margin: 10px 0px 10px 0px;
+    border: none;
+    border-bottom: 2px solid blue;
+    outline: none;
+    flex: 2;
+    font-size: large;
+}
+.q-icon {
+    padding-left: 5px;
+    width: 3%;
+    text-align: left;
+}
+.q-a {
+    padding-bottom: 10px;
+    position: relative;
+    margin-left: 0px;
+    vertical-align: middle;
+    left: 40px;
+    color: rgb(96, 2, 107);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.q-question {
+  padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: large;
+    /* height: 50px; */
+    width: 80%;
+    padding-left: 15px;
+    overflow-wrap: break-word;
+    line-break: 90%;
+    color: darkmagenta;
+}
+
+.hide {
+  display: none;
+}
+
+.page {
+  display: none;
+}
+
+.page.open {
+  display: block;
+}
+
+#title-name{
+    padding-left: 10px;
+    font-size: 4em;
+    font-weight: bold;
+    margin: 0;
+    text-align: left;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:rgb(183, 0, 79);
+}
+#user-name{
+    font-weight: normal;
+    text-align: center;
+    font-size: 24px;
+}
+#bold-user-name{
+    color: rgb(183, 0, 79);
+}
+#MyQuestion{
+    top: 70px;
+    right: 20px;
+    height: 30px;
+}
+#CreatQuestion{
+    top: 70px;
+    right: 120px;
+    height: 30px;
+}
+
+#hr{
+    border: 1px solid rgb(183, 0, 79);
+}
+section{
+    margin: 20px 0;
+    
+    /* background-color: aqua; */
+    
+}
+
+.section-Math{
+    outline: overflow;
+}
+.title-Math{
+    padding-left: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    color: blue;
+    background-color: rgba(0, 195, 255, 0.406);
+}
+.section-Eng{
+    outline:overflow;
+}
+.title-Eng{
+    padding-left: 10px;
+    margin-bottom: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    color: crimson;
+    background-color: rgba(255, 179, 0, 0.342);
+}
+.input-text-Math{
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px solid blue;
+    outline: none;
+    width: 30%;
+    font-size: large;
+}
+
+.input-text-Eng{
+    padding-left: 10px;
+    border: none;
+    border-bottom: 2px solid red;
+    outline: none;
+    width: 30%;
+    font-size: large;
+}
+
+
+/* .PreviousMathQuestion{
+    list-style-image: url(questionMark-Math.png);
+    line-height: 20px;
+    font-size: 150%;
+    
+} */
+.MathQuestion{
+
+
+    list-style-image: url(questionMark-Math.png);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    line-height: 25px;
+}
+
+.EngQuestion{
+    list-style-image: url(questionMark-Eng.png);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    line-height: 25px;
+}
+
+.linktop3{
+    position: relative;
+    margin-left: 0px;
+    vertical-align: middle;
+    left: 40px;
+    color:rgb(96, 2, 107);
+    text-decoration: none;
+
+}
+.linktop3:hover{
+    color: red    ;
+}
+
+/* #mathQuestionLi{
+    max-width: 500px;
+} */
+#deleteButton{
+    position:relative;
+    /* left: 100px;  */
+    font-size: medium;
+    display: inline-block;
+    vertical-align: middle;
+    left: 30px;
+    height: 25px;
+
+    margin-bottom: 7px;
+}
+
+#nameNode{
+
+    position: relative;
+    left:100px;
+    /* right: 100px; */
+    /* text-align: right;  */
+  
+}
+
+/* #DeleteButtonEngList{
+    position: static;
+    top:0px;
+    left:300px;
+} */
+#MathTableHead{
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    border-bottom: 2px solid blue;
+    table-layout: fixed;
+    font-family:Arial, Helvetica, sans-serif;
+    /* margin-left: 10px; */
+    position: relative;
+    /* left:100px; */
+
+    text-align: left;
+
+    width:100%;
+}
+#EngTableHead{
+    padding-top: -10px; 
+    padding-bottom: 10px; 
+    border-bottom: 2px solid red;
+    table-layout: fixed;
+    font-family:Arial, Helvetica, sans-serif;
+    /* margin-left: 10px; */
+    position: relative;
+    /* left:100px; */
+
+    text-align: left;
+
+    width:100%;
+}
+#MathTable{
+    table-layout: fixed;
+    font-family:Arial, Helvetica, sans-serif;
+    /* margin-left: 10px; */
+    position: relative;
+    /* left:100px; */
+
+    text-align: left;
+
+    width:100%;
+}
+
+#mqth{
+    position: relative;
+    /* color:rgb(66, 6, 122); */
+    padding-left: 10px;
+    /* border: 1px solid; */
+    height: 40px;
+    width: 83.5%;
+    font-size:x-large;
+
+
+}
+
+
+#mqtd{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: large;
+    /* height: 50px; */
+    width: 80%;
+    padding-left:15px;
+
+    overflow-wrap: break-word;
+    line-break: 90%;
+    color: darkmagenta;
+}
+
+#mutd{
+    overflow-wrap: break-word;
+    font-size: large;
+    padding-left: 10px;
+    /* padding-left: 10px; */
+}
+
+#mrtd{
+    font-size: large;
+    padding-left: 10px;
+}
+
+#mimgtd{
+    padding-left: 5px;
+    width: 3%;
+
+}
