@@ -10,8 +10,8 @@
 </head>
 
 
-<body onload="onload()">
-
+<body onload="getUserdata()">
+<!-- <body> -->
 <!--header part -->
 
     <header>
@@ -19,7 +19,8 @@
       <div class="page question">
         <h3 id="user-name"></h3>
         <button id = "CreatQuestion" onclick="toHome()">Home</button>
-        <button id = "MyQuestion" onclick="ToMyQuestion()">My Question</button>
+        <button id = "MyQuestion" onclick="showQuestionFromMQ()">My Question</button>
+        <!-- ToMyQuestion(); -->
       </div>
     </header>
 
@@ -80,10 +81,12 @@
             <p>แพลต์ฟอร์มเว็บบอร์ดที่ให้นักเรียนสามารถตั้งกระทู้ถามข้อสงสัยเกี่ยวกับรายวิชา 
                 และสามารถให้อาจารย์หรือนักเรียนคนอื่นเข้ามาตอบคำถามได้ </p>
             <p>ถ้าอยากเป็นส่วนหนึ่งกับเรา โปรดใส่ชื่อ</p>
-            <form style="align-items: center; ">
-                <input type="text" class = "nnninputusername" id="name" placeholder="Your name.." />
+            
+            <!-- <form  style="align-items: center; " autocorrect="off" spellcheck="false" autocomplete="off"> -->
+                <input autocorrect="off" spellcheck="false" autocomplete="off" type="text" class = "nnninputusername" id="name"  placeholder="Your name.." onkeyup="checkUser();" >
                 <button onclick="changeUsername(); ">Enter</button>
-            </form>
+            <!-- </form> -->
+            <p style="color: red;font-size: small;" id="userAlert"></p>
         </div>
       
         <div class="image">
@@ -99,16 +102,16 @@
 
     <div class = "page main-page">
       
-      <section id="{{SUBJECT}}" class = "subject hide" >
+      <section id="{{SUBJECT}}" class = "subject hide " >
         <div style="display: flex; align-items: center;">
           <img src="idea-icon.png" alt="bulb" style="height: 5rem;">
-          <h3 class="title">{{SUBJECT}}<span>.</span></h3>
+          <h3 class="title capital">{{SUBJECT}}<span>.</span></h3>
         </div>
         
         <br> 
         <table class="tab-data">
             <thead>
-              <tr class="head-table">
+              <tr class="head-table upper">
                 <th class="q-header">Question</th>
                 <th>Reply</th>
                 <th>Username</th>
@@ -117,7 +120,7 @@
           <tbody> 
             <tr id="{{QUESTION-ID}}" class="hide" onclick = "showQuestion('{{QUESTION-ID}}');">
               <td class="q-icon">
-                  <img src = "questionMark-Math.png" style="padding-right: 15px; ">
+                  <img src = "question-mark.svg" style="padding-right: 15px;width: 42px; ">
                   <span>{{QUESTION}}</span>
                   <!-- <a href="page3-Math.html" class = "q-a" style="left:0px">{{QUESTION}}</a> -->
               </td>
@@ -127,7 +130,7 @@
           </tbody>
         </table>
         <div class="add-question">
-          <input class="question-title" type = "text"  placeholder="Creat your question...">
+          <input class="question-title" type = "text"  placeholder="Create your question...">
           <input class="question-detail" type = "text"  placeholder="Detail here...">
           <button onclick="AddQuestion('{{SUBJECT}}')">Create</button>
         </div>
@@ -156,13 +159,13 @@
         }
       </style>
       <section>
-        <h2 class="title" id="q_subject">{{SUBJECT}}</h2>
+        <h2 class="title capital" id="q_subject">{{SUBJECT}}</h2>
         <hr style="margin-bottom: -10px; border: 1px solid grey;">
       </section>
 
       <section style="background-color: #eef6ee; background-clip: content-box;">
         <h2 class="section-title" >
-          <img src = "questionMark-Math.png">
+          <img src = "question-mark.svg" style="width: 42px;" >
           <span id="q_text" style="font-size: 3rem;">{{QUESTION_TEXT}}</span>
         </h2>
         <br>
@@ -220,21 +223,78 @@
 
     <section>
       
-      <table id = "mqrtable" style="table-layout: fixed;font-family:Arial, Helvetica, sans-serif; border-top: 1px solid;
+      <table id = "mqrtable" class="hide" style="table-layout: fixed;font-family:Arial, Helvetica, sans-serif; border-top: 1px solid;
       text-align: left; margin-bottom: 20px;width:100%;">
-        <thead>
+        <!-- <thead>
+          <tr class="head-table">
+            <th class="q-header">Question</th>
+            <th>Reply</th>
+            <th>Username</th>
+          </tr>
+        </thead> -->
+        <!-- <thead>
+          
           <th id = "mqs-mth" style="font-size: 2rem; background-color: rgb(197, 243, 243);">{{SUBJECT}}</th>
           <th id = "mqr-mth" style="background-color: rgba(197, 243, 243, 0.333); font-size: 1.8rem;">{{REPLY}}</th>
           <th id = "mqvth"></th>
-        </thead>
+        </thead> -->
         <!-- question -->
         <tbody>
-          <td id = "mqatd" colspan="4" style="font-size: 1.8rem; padding: 20px 10px; text-align: left; cursor: pointer" id="{{QUESTION-ID}}" onclick = "showQuestionFromMQ('{{QUESTION-ID}}');">อนุพันธ์คืออะไร</tr>
+          <tr id="{{QUESTION-ID}}" class="myq " onclick = "showQuestion('{{QUESTION-ID}}');">
+            <td class="q-icon">
+                <img src = "question-mark.svg" style="padding-right: 15px;width: 42px; ">
+                <span>{{QUESTION}}</span>
+                <!-- <a href="page3-Math.html" class = "q-a" style="left:0px">{{QUESTION}}</a> -->
+            </td>
+            <td>{{REPLY}}</td>
+            <td>{{AUTHOR}}</td>
+          </tr>
+          <!-- <div id="myquestionData"></div> -->
+          
+          <!-- <td id = "mqatd" colspan="4" style="font-size: 1.8rem; padding: 20px 10px; text-align: left; cursor: pointer" id="{{QUESTION-ID}}" onclick = "showQuestionFromMQ('{{QUESTION-ID}}');">อนุพันธ์คืออะไร</tr> -->
+        </tbody>
+        
+        
+      </table>
+      <table  style="table-layout: fixed;font-family:Arial, Helvetica, sans-serif; border-top: 1px solid;
+      text-align: left; margin-bottom: 20px;width:100%;">
+        <thead>
+          <tr class="head-table">
+            <th class="q-header">Question</th>
+            <th>Reply</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody class="myquestionData">
+
         </tbody>
       </table>
+      
+      
              
     </section>
     
+  </div>
+  <div class="modal" id="modalAlert">
+    <!-- Modal content -->
+    <div class="modal-content">
+     <div class="modal-header">
+       <span class="close">&times;</span>
+       <!-- <h2>Modal Header</h2> -->
+     </div>
+     <div class="modal-body">
+       <p class="txtmodal" style="font-size: large;text-align: center;">Some text in the Modal Body</p>
+       <!-- <p>Some other text...</p> -->
+       <!-- <input type="text" value="12134"> -->
+       
+     </div>
+     <div class="modal-footer">
+       <!-- <h3>Modal Footer</h3> -->
+       <p style="font-size: large;text-align: center;">
+          <button class="commit" style="margin: auto;">OK</button>
+        </p>
+     </div>
+   </div>  
   </div>
   
 <!-- javascript part-->
@@ -245,6 +305,58 @@
 var userName = "";
 var gQuestion = {};
 var gID ;
+var allUsers = {};
+
+const checkbox = document.querySelector(".nnninputusername");
+
+// checkbox.addEventListener('change', (event) => {
+//   if (event.currentTarget.checked) {
+//     alert('checked');
+//   } else {
+//     alert('not checked');
+//   }
+// })
+// var input = document.querySelector(".nnninputusername");
+// input.addEventListener("keyup", function(event) {
+//   if (event.keyCode === 13) {
+//    event.preventDefault();
+//    document.getElementById("myBtn").click();
+//   }
+// });
+function MakeModal(selector){
+  var modal = document.querySelector(selector);
+  var span = modal.querySelector(".close");
+  var commit = modal.querySelector(".commit");
+  span.onclick = function() {
+      modal.hide();
+  }
+  commit.onclick = function(){
+    modal.hide(true);
+  }
+
+  modal._show = function(resolve){
+    modal.style.display = "block";
+    modal.resolve = resolve;
+  }
+  modal.show = async function(){
+    return new Promise(function(resolve, reject) {
+      // the function is executed automatically when the promise is constructed
+
+      // after 1 second signal that the job is done with the result "done"
+      //setTimeout(() => resolve("done"), 1000);
+      modal._show((x)=>resolve(x));
+    });    
+    modal.style.display = "block";
+  }
+  modal.hide = function(commit = false){
+    modal.style.display = "none";
+    if(modal.resolve){
+        modal.resolve(commit);
+    }
+  }
+
+  return modal;
+}
 
 
 function UICreateSubject(subject)
@@ -279,11 +391,56 @@ function UICreateQuestion(subject,question,reply,author,qID){
     
     console.log(tr);
 }
+function UICreateQuestioninQPAGE(subject,question,reply,author,qID){
+  console.log("UICreateQuestioninQPAGE",subject,question,reply,author,qID);
+    var tr = document.querySelector("#mqrtable .myq");
+    // var tr = tbody.querySelector(".mqr");
+    console.log("tr",tr);
+
+    var newTr = tr.cloneNode(true);
+    // newTr.classList.remove("hide");
+
+    console.log(">>>>>>newTr UICreateQuestioninQPAGE", newTr);
+    var strHTML = newTr.outerHTML;
+    console.log("bef>>>>>>strHTML UICreateQuestioninQPAGE", strHTML);
+    strHTML = strHTML.replaceAll("{{QUESTION}}",question);
+    strHTML = strHTML.replaceAll("{{REPLY}}",reply);
+    strHTML = strHTML.replaceAll("{{AUTHOR}}",author);
+    strHTML = strHTML.replaceAll("{{QUESTION-ID}}",qID);
+    console.log(">>>>>>strHTML UICreateQuestioninQPAGE", strHTML);
+    // myquestionData
+    // document.querySelector("#myquestionData ")
+    var addplace = document.querySelector(".myquestionData ")
+    console.log("addplace",addplace);
+    addplace.insertAdjacentHTML('beforeend', strHTML );
+    // addplace.innerHTML = strHTML;
+    
+    
+    
+}
 
 async function AddSubject(){
   var subject = document.querySelector(".subject-add").value;
-  subject.trim();
+  subject = subject.trim();
   if(subject != ""){
+    // var flag = false;
+    var subjects = await getallsubject();
+    for(var item in subjects){
+      if(subject.toLowerCase() == item.toLowerCase()){
+        UIAlert("วิชานี้มีอยู่เเล้ว เเหกตาดูก่อนนน");
+        return;
+      }
+    }
+    // subjects.forEach((doc) => {
+    //   if(subject.toLowerCase() == doc.data().name.toLowerCase()){
+    //     flag = true;
+    //   }
+    // });
+    // if(flag == true){
+    //   UIAlert("วิชานี้มีอยู่เเล้ว เเหกตาดูก่อนนน");
+    //   return;
+    // }
+    await addsubject({subject:subject});
     UICreateSubject(subject);
     document.querySelector(".subject-add").value = "";
   }else{
@@ -306,7 +463,7 @@ async function AddQuestion(subject){
       document.querySelector("#" + subject + " .question-detail").value = "";
 
       // รหัสไรงะ
-      showQuestion(this);
+      // showQuestion(this);
 
       }else{
       UIAlert("Enter your question first!!!!")
@@ -348,6 +505,38 @@ function AddAnswer(){
     
     
 }
+async function getUserdata(){ 
+  var users = await getalluser();
+  console.log("getUserdata",users);
+  allUsers = users;
+}
+
+function checkUser(){
+  console.log("checkUser");
+  var name = document.querySelector(".nnninputusername").value;
+  name = name.trim();
+  console.log(name)
+  if(name in allUsers){
+    console.log("in");
+    document.querySelector("#userAlert").innerHTML = `there is already user in this name. continue if you are ${name}`;
+    // userAlert
+    // console.log(`there is already user in this name. continue if you are ${name}` )
+  }
+  else{
+    document.querySelector("#userAlert").innerHTML = '';
+  }
+
+  // if(name != ""){
+  //   userName = name;
+  //   console.log(userName,"  name", name);
+
+  //   toHomefromlogin();
+  // }
+  // else{
+  //   UIAlert("enter your username first!!!!")
+  // }
+
+}
 // AddAnswer()
 function toHome(){
   
@@ -372,6 +561,7 @@ function toHomefromlogin(){
 async function showQuestion(qID){
     gID = qID;
     console.log("showQuestion", qID);
+    document.querySelector(".myquestion").classList.remove("open");
     document.querySelector(".main-page").classList.remove("open");
     document.querySelector(".q-page").classList.add("open");
     var question=await getquestion({question_id:qID});
@@ -388,26 +578,31 @@ async function showQuestion(qID){
     document.querySelector("#q_author").innerHTML = question.author;
     
 }
+// !wrong
 
-async function showQuestionFromMQ(qID){
-  gID = qID;
-    console.log("showQuestion", qID);
-    document.querySelector(".myquestion").classList.remove("open");
-    document.querySelector(".q-page").classList.add("open");
-    var question=await getquestion({question_id:qID});
-    question = {subject:'N/A',text:'N/A',detail:'N/A',author:'N/A', ... question};
-    UIClearAnswer();
-    var answers = question.ans;
-    for(var ans in answers){
-        console.log("ans", answers[ans]);
-        UICreateAnswer(answers[ans]);
-    }
-    document.querySelector("#q_subject").innerHTML = question.subject;    
-    document.querySelector("#q_text").innerHTML = question.text;
-    document.querySelector("#q_detail").innerHTML = question.detail;
-    document.querySelector("#q_author").innerHTML = question.author;
+async function showQuestionFromMQ(){
+    // console.log("showQuestion", qID);
+    // document.querySelector(".home-page").classList.remove("open");
+    document.querySelector(".main-page").classList.remove("open");
+    document.querySelector(".q-page").classList.remove("open");
+    document.querySelector(".myquestion").classList.add("open");
+    await loadQuestionFromAuthor(userName);
+    // var question=await getquestion({question_id:qID});
+    // question = {subject:'N/A',text:'N/A',detail:'N/A',author:'N/A', ... question};
+    // UIClearAnswer();
+    // var answers = question.ans;
+    // for(var ans in answers){
+    //     console.log("ans", answers[ans]);
+    //     UICreateAnswer(answers[ans]);
+    // }
+    // document.querySelector("#q_subject").innerHTML = question.subject;    
+    // document.querySelector("#q_text").innerHTML = question.text;
+    // document.querySelector("#q_detail").innerHTML = question.detail;
+    // document.querySelector("#q_author").innerHTML = question.author;
 
 }
+// wrong
+
 function UIClearAnswer(){
     var ans_arr = document.querySelector(" #ReplyList .data");
     ans_arr.innerHTML = '';
@@ -428,6 +623,26 @@ async function loadSubject(){
          question = { ans:[],author:Date.now(), ... question};
          UICreateQuestion(question.subject,question.text,question.ans.length,question.author,q);
       }
+  }
+  
+}
+async function loadQuestionFromAuthor(name){
+  var questions = await getallquestionfromauthor({author:name});
+  console.log("loadQuestionFromAuthor()",questions);  
+  document.querySelector(".myquestionData ").innerHTML = '';
+  for(var q in questions){
+    var question = questions[q];
+    UICreateQuestioninQPAGE(question.subject,question.text,question.ans.length,question.author,q);
+      // UICreateSubject(item);
+      // var questions = await getallquestion({
+      //     subject:item,
+      // });
+      // console.log(item,questions);
+      // for(var q in questions){
+      //    var question = questions[q];
+      //    question = { ans:[],author:Date.now(), ... question};
+      //    UICreateQuestion(question.subject,question.text,question.ans.length,question.author,q);
+      // }
   }
   
 }
@@ -455,16 +670,29 @@ function changeUsername(){
   var name = document.querySelector(".nnninputusername").value;
   name = name.trim();
   if(name != ""){
+    
     userName = name;
+    adduser({user:userName});
     console.log(userName,"  name", name);
+    localStorage.setItem("CEEThip", name);
     toHomefromlogin();
   }
   else{
-    UIAlert("enter your username first!!!!")
+    UIAlert("enter your username first!!!!");
   }
 }
-function UIAlert(msg){
-  alert(msg);
+async function UIAlert(msg){
+  console.log("UIAlert",msg);
+  // alert(msg);
+  gAlert.querySelector(".txtmodal").innerHTML = msg;
+  await gAlert.show();
+
+  
+}
+var gAlert = MakeModal("#modalAlert");
+var prevUser = localStorage.getItem("CEEThip");
+if(prevUser != null){
+  document.querySelector("#name").value = prevUser;
 }
 
 </script>

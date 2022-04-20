@@ -150,6 +150,31 @@ async function getallanswer(obj){
     // return getDocument({col:'question',id:id});
  
 }
+async function getalluser(){
+    var a = {};
+    const querySnapshot = await getDocs(collection(db, "user"));
+    querySnapshot.forEach((doc) => {
+    a[doc.data().name] = doc.data().name;
+    });
+    // console.log(a)
+    return a;
+
+}
+
+async function getallquestionfromauthor(obj){
+    var name = obj.author;
+    // var subjname = obj.subject
+    var s =  query(questions_ref, where("author", "==", name));
+    const querySnapshot = await getDocs(s);
+    var ret = {};
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log("getallquestion",doc.id, " => ", doc.data());
+        ret[doc.id] = doc.data();
+    });
+    // var s = questions_ref.where('subject', '==', subjname).get()
+    return ret;
+}
 // console.log(await getallanswer({question_id:'2RLOYbZC6wUg3lxynsIu'}))
 
 
@@ -234,6 +259,22 @@ async function addanswer(obj){
 // console.log(await addanswer({question_id:'2RLOYbZC6wUg3lxynsIu',author:"hhh",anstext:'5555'}))
 // console.log(await getallanswer({question_id:'2RLOYbZC6wUg3lxynsIu'}))
 
+async function adduser(obj){
+    var  username = obj.user
+    console.log(username)
+    const user_ref = collection(db, 'question');
+
+    
+    // const item = await addDoc(user_ref, {
+    //     name: subjname,
+    //     
+    // })
+    await setDoc(doc(db, "user",username), {
+        name: username,
+        // amount: 0
+    });
+
+}
 
 
 //delete section
@@ -247,6 +288,14 @@ async function deletequestion(obj){
     await updateDoc(doc(db, "subject", subj), {
         amount: increment(-1)
     });
+    const item = await addDoc(questions_ref, {
+        subject: subj,
+        text: txt,   
+        time:time,
+        ans :ans, 
+        author:author,
+        detail:detail 
+    })
     
     
     await deleteDoc(questionRef);
@@ -269,12 +318,14 @@ async function deletequestion(obj){
 
 async function deletesubject(obj){
     var subjname = obj.subject
-    const subjectRef = doc(db, 'subject', 'allsubject');
+    const subjectRef = doc(db, 'subject', subjname);
+    deleteDoc(subjectRef);
 
     // Remove the 'capital' field from the document
-    await updateDoc(subjectRef, {
-        subjname: deleteField()
-    });
+    // await updateDoc(subjectRef, {
+    //     // subjname: deleteField()
+        
+    // });
 
     var s =  query(questions_ref, where("subject", "==", subjname));
     const querySnapshot = await getDocs(s);
@@ -315,6 +366,8 @@ async function deleteanswer(obj){
     });
 
 }
+
+
 // console.log(await getallanswer({question_id:'2RLOYbZC6wUg3lxynsIu'}))
 // console.log(await deleteanswer({question_id:'2RLOYbZC6wUg3lxynsIu',ans_id:1650095604622}))
 // console.log(await getallanswer({question_id:'2RLOYbZC6wUg3lxynsIu'}))
@@ -358,3 +411,6 @@ window.deletequestion = deletequestion;
 window.deletesubject = deletesubject;
 window.addsubject = addsubject;
 window.getquestion = getquestion;
+window.adduser = adduser;
+window.getalluser = getalluser;
+window.getallquestionfromauthor = getallquestionfromauthor;
