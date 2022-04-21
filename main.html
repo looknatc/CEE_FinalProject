@@ -7,26 +7,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="main.css" />
   <title>Document</title>
+  <style>
+      .state-login header .question {
+        display: none;  
+      }
+      .state-login .page.home-page {
+        display: block;  
+      }
+      .state-home .page.main-page {
+        display: block;  
+      }
+      .state-my-question .page.myquestion {
+        display: block;  
+      }
+      .state-question .page.q-page {
+        display: block;  
+      }
+
+      
+  </style>
 </head>
 
 
-<body onload="getUserdata()">
+<body onload="getUserdata()" class="state-login">
 <!-- <body> -->
 <!--header part -->
 
     <header>
       <div class="logo">CEEThip<span>.</span></div>
-      <div class="page question">
+      <div class="question">
         <h3 id="user-name"></h3>
-        <button id = "CreatQuestion" onclick="toHome()">Home</button>
+        <button id = "CreatQuestion" onclick="goBack()">Back</button>
         <button id = "MyQuestion" onclick="showQuestionFromMQ()">My Question</button>
-        <!-- ToMyQuestion(); -->
       </div>
     </header>
 
 <!-- home part-->
     <div id="login">
-    <div class="page home-page open">
+    <div class="page home-page">
       <style>
           .home{
               padding: 1.5rem 7%;
@@ -106,6 +124,9 @@
         <div style="display: flex; align-items: center;">
           <img src="idea-icon.png" alt="bulb" style="height: 5rem;">
           <h3 class="title capital">{{SUBJECT}}<span>.</span></h3>
+          <span style="width:70%;" class="spacer"></span>
+          <img src="search_icon.png" style="height: 4rem;padding-top: 5px;padding-right: 5px;">
+          <span style="width:30%;"> <input class="txt-search" onkeyup="searchBySubject('{{SUBJECT}}')" style="margin-top: 10px;width: 100%;font-size: large;" id="search-text" type="text" placeholder="search your question..."></span>
         </div>
         
         <br> 
@@ -118,7 +139,7 @@
               </tr>
             </thead>
           <tbody> 
-            <tr id="{{QUESTION-ID}}" class="hide" onclick = "showQuestion('{{QUESTION-ID}}');">
+            <tr id="Q{{QUESTION-ID}}" class="hide" onclick = "showQuestion('{{QUESTION-ID}}');">
               <td class="q-icon">
                   <img src = "question-mark.svg" style="padding-right: 15px;width: 42px; ">
                   <span>{{QUESTION}}</span>
@@ -225,22 +246,9 @@
       
       <table id = "mqrtable" class="hide" style="table-layout: fixed;font-family:Arial, Helvetica, sans-serif; border-top: 1px solid;
       text-align: left; margin-bottom: 20px;width:100%;">
-        <!-- <thead>
-          <tr class="head-table">
-            <th class="q-header">Question</th>
-            <th>Reply</th>
-            <th>Username</th>
-          </tr>
-        </thead> -->
-        <!-- <thead>
-          
-          <th id = "mqs-mth" style="font-size: 2rem; background-color: rgb(197, 243, 243);">{{SUBJECT}}</th>
-          <th id = "mqr-mth" style="background-color: rgba(197, 243, 243, 0.333); font-size: 1.8rem;">{{REPLY}}</th>
-          <th id = "mqvth"></th>
-        </thead> -->
         <!-- question -->
         <tbody>
-          <tr id="{{QUESTION-ID}}" class="myq " onclick = "showQuestion('{{QUESTION-ID}}');">
+          <tr id="Q{{QUESTION-ID}}" class="myq " onclick = "showQuestion('{{QUESTION-ID}}');">
             <td class="q-icon">
                 <img src = "question-mark.svg" style="padding-right: 15px;width: 42px; ">
                 <span>{{QUESTION}}</span>
@@ -249,9 +257,6 @@
             <td>{{REPLY}}</td>
             <td>{{AUTHOR}}</td>
           </tr>
-          <!-- <div id="myquestionData"></div> -->
-          
-          <!-- <td id = "mqatd" colspan="4" style="font-size: 1.8rem; padding: 20px 10px; text-align: left; cursor: pointer" id="{{QUESTION-ID}}" onclick = "showQuestionFromMQ('{{QUESTION-ID}}');">อนุพันธ์คืออะไร</tr> -->
         </tbody>
         
         
@@ -306,23 +311,10 @@ var userName = "";
 var gQuestion = {};
 var gID ;
 var allUsers = {};
+var gSearchData = {};
 
 const checkbox = document.querySelector(".nnninputusername");
 
-// checkbox.addEventListener('change', (event) => {
-//   if (event.currentTarget.checked) {
-//     alert('checked');
-//   } else {
-//     alert('not checked');
-//   }
-// })
-// var input = document.querySelector(".nnninputusername");
-// input.addEventListener("keyup", function(event) {
-//   if (event.keyCode === 13) {
-//    event.preventDefault();
-//    document.getElementById("myBtn").click();
-//   }
-// });
 function MakeModal(selector){
   var modal = document.querySelector(selector);
   var span = modal.querySelector(".close");
@@ -526,44 +518,77 @@ function checkUser(){
     document.querySelector("#userAlert").innerHTML = '';
   }
 
-  // if(name != ""){
-  //   userName = name;
-  //   console.log(userName,"  name", name);
+ 
+}
 
-  //   toHomefromlogin();
-  // }
-  // else{
-  //   UIAlert("enter your username first!!!!")
-  // }
+function searchBySubject(subject){
+  var searchText  = document.querySelector("#" + subject + " .txt-search").value;
+  console.log("searchBySubject",subject,searchText);
+  var data = gSearchData[subject];
+  searchText = searchText.trim().toUpperCase();
+
+  var trs = document.querySelectorAll("#" + subject + " .tab-data tbody tr");
+  console.log(trs);
+  for(var i =0;i< trs.length;i++){
+    //console.log(i);
+    if(i == 0) continue;
+    trs[i].classList.remove("hide");
+  }
+  if(searchText != ""){
+    for(var i in data){
+        var text = data[i].text + " " + data[i].detail;
+        if (text.toUpperCase().indexOf(searchText) < 0) { 
+          //console.log(i);
+          document.querySelector("#Q" + i).classList.add("hide");
+        }
+    }
+  }
 
 }
-// AddAnswer()
-function toHome(){
-  
-  onload();
-  console.log("toHome");
-    document.querySelector(".q-page").classList.remove("open");
-    document.querySelector(".myquestion").classList.remove("open");
-    document.querySelector(".main-page").classList.add("open");
+
+function goBack(){
+  var prevState = getCurrentState();
+  var stateTab = {
+    "state-home":"state-login",
+    "state-my-question":"state-home",
+    "state-question":"state-home",
+  }
+  if(stateTab[prevState] != undefined){
+    if(stateTab[prevState] == "state-home"){
+        onload();
+    }
+    changeState(stateTab[prevState],prevState);
+    
+  }else{
+    console.log("goBack","unknown prevstate","prevState");
+  }
 }
+function getCurrentState(){
+  return document.querySelector("body").className;
+}
+
+function changeState(toState,fromState)
+{
+  document.querySelector("body").classList.remove(fromState);
+  document.querySelector("body").classList.add(toState);
+}
+
 function toHomefromlogin(){
-  
+  console.log("toHomefromlogin");
   onload();
-  
-  console.log("toHomefrom login");
-    document.querySelector(".home-page").classList.remove("open");
-    document.querySelector("#login").innerHTML = '';
-    document.querySelector(".main-page").classList.add("open");
-    document.querySelector(".question").classList.add("open");
+  changeState("state-home","state-login");
 }
 
+async function showQuestionFromMQ(){
+  await loadQuestionFromAuthor(userName);
+  changeState("state-my-question","state-home");
+  
+}
 
 async function showQuestion(qID){
+
     gID = qID;
     console.log("showQuestion", qID);
-    document.querySelector(".myquestion").classList.remove("open");
-    document.querySelector(".main-page").classList.remove("open");
-    document.querySelector(".q-page").classList.add("open");
     var question=await getquestion({question_id:qID});
     question = {subject:'N/A',text:'N/A',detail:'N/A',author:'N/A', ... question};
     UIClearAnswer();
@@ -576,32 +601,8 @@ async function showQuestion(qID){
     document.querySelector("#q_text").innerHTML = question.text;
     document.querySelector("#q_detail").innerHTML = question.detail;
     document.querySelector("#q_author").innerHTML = question.author;
-    
+    changeState("state-question",getCurrentState());    
 }
-// !wrong
-
-async function showQuestionFromMQ(){
-    // console.log("showQuestion", qID);
-    // document.querySelector(".home-page").classList.remove("open");
-    document.querySelector(".main-page").classList.remove("open");
-    document.querySelector(".q-page").classList.remove("open");
-    document.querySelector(".myquestion").classList.add("open");
-    await loadQuestionFromAuthor(userName);
-    // var question=await getquestion({question_id:qID});
-    // question = {subject:'N/A',text:'N/A',detail:'N/A',author:'N/A', ... question};
-    // UIClearAnswer();
-    // var answers = question.ans;
-    // for(var ans in answers){
-    //     console.log("ans", answers[ans]);
-    //     UICreateAnswer(answers[ans]);
-    // }
-    // document.querySelector("#q_subject").innerHTML = question.subject;    
-    // document.querySelector("#q_text").innerHTML = question.text;
-    // document.querySelector("#q_detail").innerHTML = question.detail;
-    // document.querySelector("#q_author").innerHTML = question.author;
-
-}
-// wrong
 
 function UIClearAnswer(){
     var ans_arr = document.querySelector(" #ReplyList .data");
@@ -612,18 +613,21 @@ function UIClearAnswer(){
 async function loadSubject(){
   var subjects = await getallsubject();
   console.log("test()",subjects);  
+  var searchData = {};
   for(var item in subjects){
       UICreateSubject(item);
       var questions = await getallquestion({
           subject:item,
       });
       console.log(item,questions);
+      searchData[item] = questions;
       for(var q in questions){
          var question = questions[q];
          question = { ans:[],author:Date.now(), ... question};
          UICreateQuestion(question.subject,question.text,question.ans.length,question.author,q);
       }
   }
+  gSearchData = searchData;
   
 }
 async function loadQuestionFromAuthor(name){
@@ -633,25 +637,9 @@ async function loadQuestionFromAuthor(name){
   for(var q in questions){
     var question = questions[q];
     UICreateQuestioninQPAGE(question.subject,question.text,question.ans.length,question.author,q);
-      // UICreateSubject(item);
-      // var questions = await getallquestion({
-      //     subject:item,
-      // });
-      // console.log(item,questions);
-      // for(var q in questions){
-      //    var question = questions[q];
-      //    question = { ans:[],author:Date.now(), ... question};
-      //    UICreateQuestion(question.subject,question.text,question.ans.length,question.author,q);
-      // }
   }
-  
 }
 
-function ToMyQuestion(){
-  document.querySelector(".main-page").classList.remove("open");
-  document.querySelector(".q-page").classList.remove("open");
-  document.querySelector(".myquestion").classList.add("open");
-}
 function refresh(){
   console.log("refresh");
   loadSubject();
@@ -696,6 +684,5 @@ if(prevUser != null){
 }
 
 </script>
-<script src = "page2.js" ></script>
 </body>
 </html>
