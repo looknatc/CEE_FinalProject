@@ -188,15 +188,16 @@ tr:nth-child(even){
     border-bottom: 2px solid blue;
     outline: none;
     flex: 1;
-    font-size: large;
+    font-size: 2rem;
 }
 .question-detail {
     padding: 10px; margin: 10px 0px 10px 0px;
     border: none;
     border-bottom: 2px solid blue;
     outline: none;
+    height: 46px;
     flex: 2;
-    font-size: large;
+    font-size: 2rem;
 }
 
 .q-icon {

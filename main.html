@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="main.css" />
-  <title>Document</title>
+
+<title>CEEThip</title>
   <style>
       .state-login header .question {
         display: none;  
@@ -26,6 +27,7 @@
 
       
   </style>
+
 </head>
 
 
@@ -150,9 +152,9 @@
             </tr>
           </tbody>
         </table>
-        <div class="add-question">
+        <div class="add-question" style="display: flex; align-items: center;">
           <input class="question-title" type = "text"  placeholder="Create your question...">
-          <input class="question-detail" type = "text"  placeholder="Detail here...">
+          <textarea class="question-detail" type = "text"  placeholder="Detail here..."></textarea>
           <button onclick="AddQuestion('{{SUBJECT}}')">Create</button>
         </div>
         
@@ -180,15 +182,18 @@
         }
       </style>
       <section>
-        <h2 class="title capital" id="q_subject">{{SUBJECT}}</h2>
+        <div style="display: flex; align-items: center;">
+          <img src="idea-icon.png" alt="bulb" style="height: 5rem;">
+          <h2 class="title capital" id="q_subject">{{SUBJECT}}</h2>
+        </div>
         <hr style="margin-bottom: -10px; border: 1px solid grey;">
       </section>
 
       <section style="background-color: #eef6ee; background-clip: content-box;">
-        <h2 class="section-title" >
+        <div class="section-title">
           <img src = "question-mark.svg" style="width: 42px;" >
           <span id="q_text" style="font-size: 3rem;">{{QUESTION_TEXT}}</span>
-        </h2>
+        </div>
         <br>
         
         <p class="paraQuestion" id="q_detail" style="font-size: 1.7rem; text-align: justify;
