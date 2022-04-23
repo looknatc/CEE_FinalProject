@@ -94,11 +94,7 @@ button:hover{
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 2px solid blue;
-    table-layout: fixed;
     font-family: Arial, Helvetica, sans-serif;
-    /* margin-left: 10px; */
-    
-    /* left: 100px; */
     text-align: left;
     width: 100%;
 }
@@ -114,7 +110,7 @@ thead{
 
 th{
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: bolder;
     /* text-transform: uppercase; */
     padding: 1rem 2rem;
 }
@@ -540,4 +536,27 @@ padding: 2px 16px;
 /* background-color: #5cb85c; */
 color: white;
 height: 40px;
+}
+
+.spacer{
+    width: 70%;
+}
+
+@media screen and (max-width: 600px) {
+    #CreatQuestion{
+        width: 6rem;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 0;
+    }
+
+    #MyQuestion{
+        padding: 0;
+        width: 8rem;
+        font-size: 1.2rem;
+        text-align: center;
+    }    
+}
+
+@media screen and (max-width: 1300px) and (min-width:600px){
 }
