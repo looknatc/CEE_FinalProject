@@ -96,7 +96,7 @@
       <section class="home" id="home">
 
         <div class="content">
-            <h3>Welcome to yyCEEThip<span>.</span></h3>
+            <h3>Welcome to CEEThip<span>.</span></h3>
             <span>question and answer platform that help students with online learning</span>
             <p>แพลต์ฟอร์มเว็บบอร์ดที่ให้นักเรียนสามารถตั้งกระทู้ถามข้อสงสัยเกี่ยวกับรายวิชา 
                 และสามารถให้อาจารย์หรือนักเรียนคนอื่นเข้ามาตอบคำถามได้ </p>
@@ -424,7 +424,7 @@ async function AddSubject(){
     var subjects = await getallsubject();
     for(var item in subjects){
       if(subject.toLowerCase() == item.toLowerCase()){
-        UIAlert("วิชานี้มีอยู่เเล้ว เเหกตาดูก่อนนน");
+        UIAlert("วิชานี้มีอยู่เเล้วค่ะ กรุณาดูที่ด้านบน");
         return;
       }
     }
@@ -586,7 +586,8 @@ function toHomefromlogin(){
 
 async function showQuestionFromMQ(){
   await loadQuestionFromAuthor(userName);
-  changeState("state-my-question","state-home");
+  // changeState("state-my-question","state-home");
+  changeState("state-my-question",getCurrentState());
   
 }
 
