@@ -91,20 +91,118 @@
               height: auto;
               align-items: center;
           }
+
+          @media screen and (max-width: 600px){
+            .home{
+              flex-direction: column;
+            }
+            .home .content{
+              width: 100%;
+              text-align: center;
+              
+            }
+            .home .content h3{
+                font-size: 4rem;
+                color:#333;
+                
+            }
+            .home .content span{
+                text-align: center;
+                font-size: 1.8rem;
+                color:var(--pink);
+                padding: 2rem 0;
+                line-height: 1.8;
+            }
+            .home .content p{
+                font-size: 2rem;
+                color:rgb(123, 122, 122);
+                padding: 1rem 0;
+                line-height: 1.5;
+                text-align: left;
+                
+            }
+            .home input{
+                width: 24rem;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid grey;
+                border-radius: 4px;
+                box-sizing: border-box;
+                align-items: center;
+            }
+
+            .image img{
+              width: 35rem;
+            }
+            
+            .button-name{
+              align-items: center;
+            }
+          }
+          @media screen and (max-width: 1300px) and (min-width:600px){
+            .home{
+              flex-direction: column;
+            }
+            .home .content{
+              width: 100%;
+              text-align: center;
+            }
+            .home .content h3{
+              margin-top: 2rem;
+              font-size: 5.5rem;
+              color:#333;
+            }
+            .home .content span{
+                text-align: center;
+                font-size: 3rem;
+                color:var(--pink);
+                padding: 2rem 0;
+                line-height: 1.8;
+            }
+            .home .content p{
+                font-size: 2.4rem;
+                color:rgb(123, 122, 122);
+                padding: 1rem 0;
+                line-height: 1.5;
+                text-align: left;
+                
+            }
+            .home input{
+                width: 50rem;
+                padding: 12px 20px;
+                margin: 8px 0;
+                margin-right: 20px;
+                display: inline-block;
+                border: 1px solid grey;
+                border-radius: 4px;
+                box-sizing: border-box;
+                align-items: center;
+            }
+
+            .image img{
+              width: 60rem;
+            }
+            
+            .button-name{
+              align-items: center;
+            }
+          }
       </style>
       
       <section class="home" id="home">
 
         <div class="content">
-            <h3>Welcome to yyCEEThip<span>.</span></h3>
+            <h3>Welcome to CEEThip<span>.</span></h3>
             <span>question and answer platform that help students with online learning</span>
+            <hr>
             <p>แพลต์ฟอร์มเว็บบอร์ดที่ให้นักเรียนสามารถตั้งกระทู้ถามข้อสงสัยเกี่ยวกับรายวิชา 
                 และสามารถให้อาจารย์หรือนักเรียนคนอื่นเข้ามาตอบคำถามได้ </p>
             <p>ถ้าอยากเป็นส่วนหนึ่งกับเรา โปรดใส่ชื่อ</p>
             
             <!-- <form  style="align-items: center; " autocorrect="off" spellcheck="false" autocomplete="off"> -->
                 <input autocorrect="off" spellcheck="false" autocomplete="off" type="text" class = "nnninputusername" id="name"  placeholder="Your name.." onkeyup="checkUser();" >
-                <button onclick="changeUsername(); ">Enter</button>
+                <button class="button-name" onclick="changeUsername(); ">Enter</button>
             <!-- </form> -->
             <p style="color: red;font-size: small;" id="userAlert"></p>
         </div>
@@ -112,6 +210,7 @@
         <div class="image">
             <img src="working3.png" alt="Working images">
         </div>
+      </section>
     </div>
   </div>
 
@@ -121,18 +220,124 @@
 <!-- web board part -->
 
     <div class = "page main-page">
+      <style>
+        .subject-webboard{
+          display: flex; align-items: center;
+        }
+
+        .subject-webboard img{
+          height: 50px;
+        }
+
+        .title{
+          font-size: 3rem;
+          font-weight: bold;
+        }
+
+        .txt-search{
+          margin-top: 10px;width: 100%;font-size: large;
+        }
+
+        .search-image{
+          height: 4rem;padding-top: 5px;padding-right: 5px;
+        }
+
+        .q-icon img{
+          padding-right: 15px;width: 42px;
+        }
+
+        .add-question{
+          display: flex; align-items: center;
+        }
+
+        @media screen and (max-width: 800px){
+          .title{
+            font-size: 1.5rem;
+          }
+
+          .txt-search{
+            width: 60%;
+            font-size: .7rem;
+            float: right;
+          }
+
+          .subject-webboard img{
+          height: 30px;
+          }
+
+          .search-image{
+            height: 2rem;padding-top: 5px;padding-right: 5px;
+          }
+
+          th{
+            font-size: 1.2rem;
+            margin: 0; padding: 0;
+            text-align: center;
+          }
+
+          .q-header{
+            width: 45%;
+            text-align: left;
+          }
+
+          td{
+            font-size: 1.1rem;
+          }
+
+          .q-icon img{
+            width: 12px;
+            padding: 0;
+          }
+
+          .question-title{
+            font-size: .8rem;
+            height: 2rem;
+          }
+
+          .question-detail{
+            padding: 4px 10px;
+            font-size: .8rem;
+            width: 50%;
+            height: 2rem;
+            
+          }
+
+          .add-question button{
+            margin: 0; padding: 0 1.5rem;
+            text-align: center;
+            font-size: 1rem;
+            height: 2rem;
+          }
+
+          .add-subject img{
+            height: 2rem;
+            width: auto;
+          }
+
+          .add-subject input{
+            height: 2rem; font-size: 1rem;
+          }
+
+          .add-subject button{
+            margin: 0; padding: 0 1.5rem;
+            text-align: center;
+            font-size: 1rem;
+            height: 2rem;
+          }         
+        }
+      </style>
       
       <section id="{{SUBJECT}}" class = "subject hide " >
-        <div style="display: flex; align-items: center;">
-          <img src="idea-icon.png" alt="bulb" style="height: 5rem;">
+        <div class="subject-webboard">
+          <img src="idea-icon.png" alt="bulb">
           <h3 class="title capital">{{SUBJECT}}<span>.</span></h3>
-          <span style="width:70%;" class="spacer"></span>
-          <img src="search_icon.png" style="height: 4rem;padding-top: 5px;padding-right: 5px;">
-          <span style="width:30%;"> <input class="txt-search" onkeyup="searchBySubject('{{SUBJECT}}')" style="margin-top: 10px;width: 100%;font-size: large;" id="search-text" type="text" placeholder="search your question..."></span>
+          <span class="spacer"></span>
+          <img style="margin-left: auto;" class="search-image" src="search_icon.png">
+          <input style="margin-left: auto; margin-left: 0;" class="txt-search" onkeyup="searchBySubject('{{SUBJECT}}')" id="search-text" type="text" placeholder="search your question...">
         </div>
         
         <br> 
-        <table class="tab-data">
+        <table class="tab-data" >
             <thead>
               <tr class="head-table upper">
                 <th class="q-header">Question</th>
@@ -143,7 +348,7 @@
           <tbody> 
             <tr id="Q{{QUESTION-ID}}" class="hide" onclick = "showQuestion('{{QUESTION-ID}}');">
               <td class="q-icon">
-                  <img src = "question-mark.svg" style="padding-right: 15px;width: 42px; ">
+                  <img src = "question-mark.svg">
                   <span>{{QUESTION}}</span>
                   <!-- <a href="page3-Math.html" class = "q-a" style="left:0px">{{QUESTION}}</a> -->
               </td>
@@ -152,7 +357,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="add-question" style="display: flex; align-items: center;">
+        <div class="add-question">
           <input class="question-title" type = "text"  placeholder="Create your question...">
           <textarea class="question-detail" type = "text"  placeholder="Detail here..."></textarea>
           <button onclick="AddQuestion('{{SUBJECT}}')">Create</button>
@@ -180,6 +385,98 @@
             resize: none;
             width: 100%;
         }
+
+        .section-title{
+            align-items: center;
+          }
+
+        .section-title img{
+          width: 42px;
+        }
+
+        #q_text{
+          font-size: 3rem;
+        }
+
+        #q_detail{
+          font-size: 1.7rem; 
+          text-align: justify;
+          vertical-align: top;
+        }
+
+        #q_author{
+          text-align: right; font-size:1.5rem;
+        }
+
+        #math{
+          height: 30px;
+          font-size: larger; padding-left: 10px;
+          background-color: rgba(197, 243, 243, 0.333);
+          padding-bottom: 0px; width: 75%;
+        }
+
+        #muth{
+          background-color: rgb(197, 243, 243);
+          text-align: right; padding-right: 10px
+        }
+
+        #matd{
+          font-size: large; padding: 10px; text-align: left; margin: 10px;
+        }
+
+        #detail button{
+          margin-top: 0.5rem; border-radius: 5rem; background:#333;
+          color:#fff; padding:.5rem 3.5rem;cursor: pointer; font-size: 1.5rem;
+          float: right;
+        }
+
+        @media screen and (max-width: 800px) {
+
+          #q_subject{
+            font-size:2rem;
+          }
+          #q_text{
+            font-size: 2rem;
+          }
+
+          #q_detail{
+          font-size: 1.2rem; 
+          text-align: justify;
+          vertical-align: top;
+          }
+
+          .section-title img{
+            width: 27px;
+          }
+
+          #q_author{
+            text-align: right; font-size:1.3rem;
+          }
+
+          #math{
+            height: 30px; text-align: left;
+            font-size: 1.5rem; padding-left: 10px;
+            background-color: rgba(197, 243, 243, 0.333);
+            padding-bottom: 0px;
+          }
+
+          #muth{
+            background-color: rgb(197, 243, 243);
+            text-align: right; padding-right: 10px;
+            font-size: 1.5rem;
+          }
+
+          #matd{
+            font-size: 1.5rem; padding: 10px; text-align: left; margin: 10px;
+          }
+
+          #detail button{
+          margin-top: 0.5rem; border-radius: 5rem; background:#333;
+          color:#fff; padding:.5rem 3.5rem;cursor: pointer; font-size: 1rem;
+          float: right;
+        }
+        
+        }
       </style>
       <section>
         <div style="display: flex; align-items: center;">
@@ -191,23 +488,20 @@
 
       <section style="background-color: #eef6ee; background-clip: content-box;">
         <div class="section-title">
-          <img src = "question-mark.svg" style="width: 42px;" >
-          <span id="q_text" style="font-size: 3rem;">{{QUESTION_TEXT}}</span>
+          <img src = "question-mark.svg">
+          <span id="q_text">{{QUESTION_TEXT}}</span>
         </div>
         <br>
         
-        <p class="paraQuestion" id="q_detail" style="font-size: 1.7rem; text-align: justify;
-        vertical-align: top;">{{QUESTION_DETAIL}}</p>
-        <h3 style="text-align: right; font-size:1.5rem;" id="q_author">{{AUTHOR}}</h3>
+        <p class="paraQuestion" id="q_detail">{{QUESTION_DETAIL}}</p>
+        <h3 id="q_author">{{AUTHOR}}</h3>
         <hr style="border: 1px solid grey; width: 100%;"/>
       </section>
           
       <section id = "detail">
         <h2 class="section-answer" style="font-size:2rem;">Reply:</h2>
         <textarea id="ansTextInput" name="answer" rows="5" cols="90" placeholder="Reply..."></textarea>
-        <button style="margin-top: 0.5rem; border-radius: 5rem; background:#333;
-        color:#fff; padding:.5rem 3.5rem;cursor: pointer; font-size: 1.5rem;
-        float: right;" onclick="AddAnswer()">Submit</button>
+        <button  onclick="AddAnswer()">Submit</button>
       </section>
 
       <br>
@@ -217,16 +511,12 @@
         font-size: 1.5rem; position: relative; border-radius: 4px;border: 1px solid; 
         text-align: left;margin-bottom: 20px;width:100%;">
           <thead>
-            <th id = "math" style=" height: 30px;
-            font-size: larger; padding-left: 10px;
-            background-color: rgba(197, 243, 243, 0.333);
-            padding-bottom: 0px; width: 75%;">Ans</th>
-            <th id = "muth" style="background-color: rgb(197, 243, 243);
-            text-align: right; padding-right: 10px;">{{ANS-AUTHOR}}</th>
+            <th id = "math">Ans</th>
+            <th id = "muth">{{ANS-AUTHOR}}</th>
           </thead>
             
           <tbody>
-            <td id = "matd" style = "font-size: large; padding: 10px; text-align: left; margin: 10px;" colspan="2" ><p>{{ANS-TEXT}}</p></tr>
+            <td id = "matd" style = "" colspan="2" ><p>{{ANS-TEXT}}</p></tr>
           </tbody>
         </table>
         <div class="data"></div>
@@ -240,17 +530,39 @@
         #mqatd:hover{
           color:#e84393;
         }
+
+        .title-MyQuestion{
+          font-size: 3rem;
+        }
+
+        #mqrtable{
+          table-layout: fixed;font-family:Arial, Helvetica, sans-serif; border-top: 1px solid;
+          text-align: left; margin-bottom: 20px;width:100%;
+        }
+
+        @media screen and (max-width: 800px){
+          .title-MyQuestion{
+            font-size: 2.3rem;
+          }
+
+          .section-myquestion{
+            margin-bottom: 0; padding-bottom: 0;
+          }
+
+          .q-icon{
+            width: 60%;
+          }
+        }
       </style>
-    <section>
-      <h3 class="title-MyQuestion" style="font-size: 3rem;">MyQuestion<span style="color:#e84393">.</span></h3>
+    <section class="section-myquestion">
+      <h3 class="title-MyQuestion">MyQuestion<span style="color:#e84393">.</span></h3>
       <hr>
     </section >
     
 
     <section>
       
-      <table id = "mqrtable" class="hide" style="table-layout: fixed;font-family:Arial, Helvetica, sans-serif; border-top: 1px solid;
-      text-align: left; margin-bottom: 20px;width:100%;">
+      <table id = "mqrtable" class="hide">
         <!-- question -->
         <tbody>
           <tr id="Q{{QUESTION-ID}}" class="myq " onclick = "showQuestion('{{QUESTION-ID}}');">
