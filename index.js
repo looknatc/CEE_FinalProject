@@ -288,16 +288,15 @@ async function deletequestion(obj){
     await updateDoc(doc(db, "subject", subj), {
         amount: increment(-1)
     });
-    const item = await addDoc(questions_ref, {
+    /*const item = await addDoc(questions_ref, {
         subject: subj,
         text: txt,   
         time:time,
         ans :ans, 
         author:author,
         detail:detail 
-    })
-    
-    
+    })*/
+        
     await deleteDoc(questionRef);
     // var referenceNode = evt.srcElement;
     // var txt = document.querySelector(".txt-addquestion").value;

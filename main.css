@@ -191,7 +191,7 @@ tr:nth-child(even){
     border: none;
     border-bottom: 2px solid blue;
     outline: none;
-    height: 46px;
+    height: 47px;
     flex: 2;
     font-size: 2rem;
 }
@@ -541,6 +541,71 @@ height: 40px;
 .spacer{
     width: 70%;
 }
+
+.state-login header .question {
+display: none;  
+}
+.state-login .page.home-page {
+display: block;  
+}
+.state-home .page.main-page {
+display: block;  
+}
+.state-my-question .page.myquestion {
+display: block;  
+}
+.state-question .page.q-page {
+display: block;  
+}
+
+.txt-search {
+text-indent: 10px;
+padding-bottom: 3px;
+border-radius: 12px;
+}
+
+.collapse .tab-data, .collapse .add-question, .collapse .search-image, .collapse .txt-search {
+display: none;          
+}
+
+section.collapse {
+    padding-top: 0;
+    padding-bottom: 0;
+    /*margin: 0  9%;*/
+}
+
+section .expand-more {
+    display: none;        
+}
+
+.collapse .expand-less {
+display: none;    
+}
+
+.collapse .expand-less {
+    display: none;        
+}
+.collapse .expand-more {
+display: inline-block;        
+}
+    
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.admin {
+    display: none !important;   
+}
+
+body[admin='true'] .admin {
+    display: unset !important; 
+} 
+
 
 @media screen and (max-width: 600px) {
     #CreatQuestion{

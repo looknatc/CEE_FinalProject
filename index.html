@@ -6,28 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="main.css" />
-
-<title>CEEThip</title>
-  <style>
-      .state-login header .question {
-        display: none;  
-      }
-      .state-login .page.home-page {
-        display: block;  
-      }
-      .state-home .page.main-page {
-        display: block;  
-      }
-      .state-my-question .page.myquestion {
-        display: block;  
-      }
-      .state-question .page.q-page {
-        display: block;  
-      }
-
-      
-  </style>
-
+  <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href ="favicon.ico">
+  <title>CEEThip</title>
 </head>
 
 
@@ -36,7 +21,7 @@
 <!--header part -->
 
     <header>
-      <div class="logo">CEEThip<span>.</span></div>
+      <div class="logo">CEEThip<span>.</span><span class="admin">admin</span></span></div>
       <div class="question">
         <h3 id="user-name"></h3>
         <button id = "CreatQuestion" onclick="goBack()">Back</button>
@@ -87,7 +72,7 @@
               align-items: center;
           }
           .image img{
-              width: 70rem;
+              width: 100%;
               height: auto;
               align-items: center;
           }
@@ -95,6 +80,7 @@
           @media screen and (max-width: 600px){
             .home{
               flex-direction: column;
+              padding: 1.2rem;
             }
             .home .content{
               width: 100%;
@@ -102,19 +88,19 @@
               
             }
             .home .content h3{
-                font-size: 4rem;
+                font-size: 2.5rem;
                 color:#333;
                 
             }
             .home .content span{
                 text-align: center;
-                font-size: 1.8rem;
+                font-size: 2rem;
                 color:var(--pink);
                 padding: 2rem 0;
                 line-height: 1.8;
             }
             .home .content p{
-                font-size: 2rem;
+                font-size: 1.6rem;
                 color:rgb(123, 122, 122);
                 padding: 1rem 0;
                 line-height: 1.5;
@@ -133,16 +119,21 @@
             }
 
             .image img{
-              width: 35rem;
+              width: 100%;
             }
             
             .button-name{
               align-items: center;
             }
+
+            header {
+              padding: 0.5rem;
+            }
           }
           @media screen and (max-width: 1300px) and (min-width:600px){
             .home{
               flex-direction: column;
+              padding: 1rem;
             }
             .home .content{
               width: 100%;
@@ -150,18 +141,18 @@
             }
             .home .content h3{
               margin-top: 2rem;
-              font-size: 5.5rem;
+              font-size: 4rem;
               color:#333;
             }
             .home .content span{
                 text-align: center;
-                font-size: 3rem;
+                font-size: 1.8rem;
                 color:var(--pink);
                 padding: 2rem 0;
                 line-height: 1.8;
             }
             .home .content p{
-                font-size: 2.4rem;
+                font-size: 1.8rem;
                 color:rgb(123, 122, 122);
                 padding: 1rem 0;
                 line-height: 1.5;
@@ -181,12 +172,17 @@
             }
 
             .image img{
-              width: 60rem;
+              width: 100%;
             }
             
             .button-name{
               align-items: center;
             }
+
+            header {
+              padding: 1rem;
+            }
+
           }
       </style>
       
@@ -226,20 +222,23 @@
         }
 
         .subject-webboard img{
-          height: 50px;
+          height: 30px;
         }
 
-        .title{
+        .title,.expand-more,.expand-less{
           font-size: 3rem;
           font-weight: bold;
         }
 
         .txt-search{
-          margin-top: 10px;width: 100%;font-size: large;
+          margin-top: 10px;font-size: large;
         }
 
         .search-image{
-          height: 4rem;padding-top: 5px;padding-right: 5px;
+          height: 4rem;
+          padding-top: 2px;
+          padding-right: 5px;
+          margin-top: 5px;
         }
 
         .q-icon img{
@@ -250,19 +249,50 @@
           display: flex; align-items: center;
         }
 
+        .subject-title {
+          width:60%;
+        }
+
+        .search {
+          width:40%;
+        }
+
+        .subject-title > span:hover {
+          /*transform: scale(1.01);*/
+          cursor: pointer;
+          background-color: rgb(0 0 0 / 10%);
+          border-radius: 18px;
+        }
+
+        .subject-title > span {
+          display: inline-block;
+        }
+        
+        .spacer {
+          width:30%;
+        }
+
         @media screen and (max-width: 800px){
-          .title{
+          .tab-data {
+            padding-top: 2px;
+          }
+
+          section {
+              padding: 1rem 2%;
+              margin: 5px 0;
+          }
+          .title,.expand-more,.expand-less{
             font-size: 1.5rem;
           }
 
           .txt-search{
-            width: 60%;
+            /*width: 60%;*/
             font-size: .7rem;
             float: right;
           }
 
           .subject-webboard img{
-          height: 30px;
+            height: 22px;
           }
 
           .search-image{
@@ -278,10 +308,11 @@
           .q-header{
             width: 45%;
             text-align: left;
+            height: unset;
           }
 
           td{
-            font-size: 1.1rem;
+            font-size: 1.2rem;
           }
 
           .q-icon img{
@@ -323,17 +354,45 @@
             text-align: center;
             font-size: 1rem;
             height: 2rem;
-          }         
+          }       
+          
+          .subject-title {
+            width:65%;
+          }
+          .search {
+            width:35%;
+          }
+          .spacer {
+            width:10%;
+          }
+          
         }
       </style>
       
       <section id="{{SUBJECT}}" class = "subject hide " >
         <div class="subject-webboard">
-          <img src="idea-icon.png" alt="bulb">
-          <h3 class="title capital">{{SUBJECT}}<span>.</span></h3>
-          <span class="spacer"></span>
-          <img style="margin-left: auto;" class="search-image" src="search_icon.png">
-          <input style="margin-left: auto; margin-left: 0;" class="txt-search" onkeyup="searchBySubject('{{SUBJECT}}')" id="search-text" type="text" placeholder="search your question...">
+          <span class="subject-title" onclick="toggleCollapse('{{SUBJECT}}')">
+            <span>
+            <span class="material-symbols-outlined expand-more">
+              chevron_right
+              </span>
+            <span class="material-symbols-outlined expand-less">
+              expand_more
+            </span>          
+            <img src="idea-icon.png" alt="bulb">
+            <span  class="title capital">{{SUBJECT}}<span>.</span></span> <span onclick="deleteSubject(event,'{{SUBJECT}}')" class="admin material-symbols-outlined">
+              delete_forever
+              </span>
+            </span>
+          </span>
+          <!--<span  class="spacer"></span>         -->
+          <span class="search">
+            <input style="margin-left: auto; margin-left: 0;float:right;" class="txt-search" onkeyup="searchBySubject('{{SUBJECT}}')" id="search-text" type="text" placeholder="search your question...">
+            <img style="margin-left: auto;float:right;" class="search-image" src="search_icon.png">
+            <span  style="margin-left: auto;float:right;" class="expand-more">
+              {{NUM-QUESTION}} คำถาม
+            </span>         
+          </span>         
         </div>
         
         <br> 
@@ -350,6 +409,10 @@
               <td class="q-icon">
                   <img src = "question-mark.svg">
                   <span>{{QUESTION}}</span>
+                  <span onclick="deleteQuestion(event,'{{QUESTION-ID}}')" class="admin material-symbols-outlined">
+                    delete_forever
+                    </span>
+                  </span>
                   <!-- <a href="page3-Math.html" class = "q-a" style="left:0px">{{QUESTION}}</a> -->
               </td>
               <td>{{REPLY}}</td>
@@ -621,7 +684,7 @@
   
 <!-- javascript part-->
 
-<script type="module" src ="home.js"></script>    
+<script type="module" src ="index.js"></script>    
 <script>
      
 var userName = "";
@@ -670,20 +733,24 @@ function MakeModal(selector){
 
 function UICreateSubject(subject)
 {
-    console.log(subject);
+    console.log("UICreateSubject",subject,gSearchData[subject]);
     var section = document.querySelector("section.subject");
     var newSection = section.cloneNode(true);
     newSection.classList.remove("hide");
     var strHTML = newSection.outerHTML;
     strHTML = strHTML.replaceAll("{{SUBJECT}}",subject);
-    
+    strHTML = strHTML.replaceAll("{{NUM-QUESTION}}",Object.keys(gSearchData[subject]).length);
     var body = document.querySelector("#subjectData");
     body.insertAdjacentHTML('beforeend', strHTML );
+
+    if(localStorage.getItem(subject)!=null){
+      toggleCollapse(subject);
+    }
 }
 
 function UICreateQuestion(subject,question,reply,author,qID){
   console.log("UICreateQuestion",subject,question,reply,author,qID);
-    var tbody = document.querySelector("#" + subject + " .tab-data tbody");
+    var tbody = document.querySelector("[id='" + subject + "']" + " .tab-data tbody");
     var tr = tbody.querySelector(".hide");
 
     var newTr = tr.cloneNode(true);
@@ -698,7 +765,7 @@ function UICreateQuestion(subject,question,reply,author,qID){
 
     tbody.insertAdjacentHTML('beforeend', strHTML );
     
-    console.log(tr);
+    //console.log(tr);
 }
 function UICreateQuestioninQPAGE(subject,question,reply,author,qID){
   console.log("UICreateQuestioninQPAGE",subject,question,reply,author,qID);
@@ -730,6 +797,10 @@ function UICreateQuestioninQPAGE(subject,question,reply,author,qID){
 
 async function AddSubject(){
   var subject = document.querySelector(".subject-add").value;
+  // subject = dealHtmlTag(subject);
+  if(!dealSubjectName(subject)){
+    return;
+  }
   subject = subject.trim();
   if(subject != ""){
     // var flag = false;
@@ -750,6 +821,7 @@ async function AddSubject(){
     //   return;
     // }
     await addsubject({subject:subject});
+    gSearchData[subject] = {};
     UICreateSubject(subject);
     document.querySelector(".subject-add").value = "";
   }else{
@@ -757,9 +829,46 @@ async function AddSubject(){
   }
 
 }
+
+function dealHtmlTag(content){
+    content = content.replaceAll("<","&lt");
+    content = content.replaceAll(">","&gt");
+    return content;
+
+}
+
+function dealSubjectName(content){
+  if(content.includes('<')){
+    UIAlert("subject cannot contain '<'")
+    return false;
+  }
+  if(content.includes('>')){
+    UIAlert("subject cannot contain '>'")
+    return false
+  }
+  return true;
+   
+
+}
+function dealName(content){
+  if(content.includes('<')){
+    UIAlert("name cannot contain '<'")
+    return false;
+  }
+  if(content.includes('>')){
+    UIAlert("name cannot contain '>'")
+    return false
+  }
+  return true;
+   
+
+}
+
 async function AddQuestion(subject){
-    var title = document.querySelector("#" + subject + " .question-title").value;
-    var detail = document.querySelector("#" + subject + " .question-detail").value;
+    var title = document.querySelector("[id='" + subject + "']" + " .question-title").value;
+    title = dealHtmlTag(title);
+    var detail = document.querySelector("[id='" + subject + "']" + " .question-detail").value;
+    detail = dealHtmlTag(detail);
     title = title.trim();
     detail = detail.trim();
     if( title != ""){
@@ -768,8 +877,8 @@ async function AddQuestion(subject){
       var x = await addquestion({question_txt:title,subject:subject,detail:detail,author:userName});
       console.log(x);
       UICreateQuestion(subject,title,0,userName,x);
-      document.querySelector("#" + subject + " .question-title").value = "";
-      document.querySelector("#" + subject + " .question-detail").value = "";
+      document.querySelector("[id='" + subject + "']" + " .question-title").value = "";
+      document.querySelector("[id='" + subject + "']" + " .question-detail").value = "";
 
       // รหัสไรงะ
       // showQuestion(this);
@@ -802,6 +911,7 @@ function UICreateAnswer(obj){
 }
 function AddAnswer(){
     var ans_text = document.querySelector("#ansTextInput").value;
+    ans_text = dealHtmlTag(ans_text);
     ans_text = ans_text.trim();
     if(ans_text !=""){
       console.log(ans_text);
@@ -823,6 +933,7 @@ async function getUserdata(){
 function checkUser(){
   console.log("checkUser");
   var name = document.querySelector(".nnninputusername").value;
+  name = dealHtmlTag(name);
   name = name.trim();
   console.log(name)
   if(name in allUsers){
@@ -838,13 +949,45 @@ function checkUser(){
  
 }
 
+function toggleCollapse(subject){
+  var section = document.querySelector("[id='" + subject + "']");
+  if(section.classList.contains("collapse")){
+    section.classList.remove("collapse");
+    localStorage.removeItem(subject);
+  }else{
+    section.classList.add("collapse");
+    localStorage.setItem(subject,"collapse")
+  }
+}
+
+async function deleteQuestion(event,question)
+{
+  event.preventDefault();
+  event.stopPropagation();
+  console.log("deleteQuestion",question);
+  await deletequestion({question_id:question});
+  // delete from DOM
+  var e  = document.querySelector("#Q" + question);
+  e.parentElement.removeChild(e);
+}
+
+async function deleteSubject(event,subject){
+  event.preventDefault();
+  event.stopPropagation();
+  console.log("deleteSubject",subject);
+
+  await deletesubject({subject:subject});
+  localStorage.removeItem(subject);
+  refresh();
+}
+
 function searchBySubject(subject){
-  var searchText  = document.querySelector("#" + subject + " .txt-search").value;
+  var searchText  = document.querySelector("[id='" + subject + "']" + " .txt-search").value;
   console.log("searchBySubject",subject,searchText);
   var data = gSearchData[subject];
   searchText = searchText.trim().toUpperCase();
 
-  var trs = document.querySelectorAll("#" + subject + " .tab-data tbody tr");
+  var trs = document.querySelectorAll("[id='" + subject + "']" + " .tab-data tbody tr");
   console.log(trs);
   for(var i =0;i< trs.length;i++){
     //console.log(i);
@@ -931,22 +1074,20 @@ function UIClearAnswer(){
 async function loadSubject(){
   var subjects = await getallsubject();
   console.log("test()",subjects);  
-  var searchData = {};
+  gSearchData = {};
   for(var item in subjects){
-      UICreateSubject(item);
       var questions = await getallquestion({
           subject:item,
       });
       console.log(item,questions);
-      searchData[item] = questions;
+      gSearchData[item] = questions;
+      UICreateSubject(item);
       for(var q in questions){
          var question = questions[q];
          question = { ans:[],author:Date.now(), ... question};
          UICreateQuestion(question.subject,question.text,question.ans.length,question.author,q);
       }
   }
-  gSearchData = searchData;
-  
 }
 async function loadQuestionFromAuthor(name){
   var questions = await getallquestionfromauthor({author:name});
@@ -960,6 +1101,7 @@ async function loadQuestionFromAuthor(name){
 
 function refresh(){
   console.log("refresh");
+  document.querySelector("#subjectData").innerHTML = '';
   loadSubject();
 }
 function onload(){
@@ -973,7 +1115,12 @@ function onload(){
   loadSubject();
 }
 function changeUsername(){
+  document.querySelector("body").removeAttribute("admin");
   var name = document.querySelector(".nnninputusername").value;
+  // name = dealHtmlTag(name);
+  if(!dealName(name)){
+    return;
+  }
   name = name.trim();
   if(name != ""){
     
@@ -982,6 +1129,9 @@ function changeUsername(){
     console.log(userName,"  name", name);
     localStorage.setItem("CEEThip", name);
     toHomefromlogin();
+    if(3781712871678598 == cyrb53(name)){
+        document.querySelector("body").setAttribute("admin","true")
+    }
   }
   else{
     UIAlert("enter your username first!!!!");
@@ -995,6 +1145,19 @@ async function UIAlert(msg){
 
   
 }
+
+const cyrb53 = function(str, seed = 0) {
+    let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+    for (let i = 0, ch; i < str.length; i++) {
+        ch = str.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1>>>16), 2246822507) ^ Math.imul(h2 ^ (h2>>>13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2>>>16), 2246822507) ^ Math.imul(h1 ^ (h1>>>13), 3266489909);
+    return 4294967296 * (2097151 & h2) + (h1>>>0);
+};
+
 var gAlert = MakeModal("#modalAlert");
 var prevUser = localStorage.getItem("CEEThip");
 if(prevUser != null){
